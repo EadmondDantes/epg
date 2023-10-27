@@ -1,0 +1,46 @@
+import xml.etree.ElementTree as ET
+
+# Create the EPG XML structure for Channel 12
+epg = ET.Element("EPG")
+
+# Define Channel 12
+channel = ET.SubElement(epg, "Channel")
+channel_id = ET.SubElement(channel, "ID")
+channel_id.text = "12"
+channel_name = ET.SubElement(channel, "Name")
+channel_name.text = "Channel 12 - Israeli Channel"
+
+# Define Program 1
+program = ET.SubElement(epg, "Program")
+program_id = ET.SubElement(program, "ID")
+program_id.text = "1"
+program_title = ET.SubElement(program, "Title")
+program_title.text = "Morning News"
+program_description = ET.SubElement(program, "Description")
+program_description.text = "Get the latest news updates in the morning."
+program_start_time = ET.SubElement(program, "StartTime")
+program_start_time.text = "2023-10-27T07:00:00"
+program_end_time = ET.SubElement(program, "EndTime")
+program_end_time.text = "2023-10-27T08:00:00"
+
+# Define Program 2
+program = ET.SubElement(epg, "Program")
+program_id = ET.SubElement(program, "ID")
+program_id.text = "2"
+program_title = ET.SubElement(program, "Title")
+program_title.text = "Afternoon Show"
+program_description = ET.SubElement(program, "Description")
+program_description.text = "Entertaining afternoon show with guests and music."
+program_start_time = ET.SubElement(program, "StartTime")
+program_start_time.text = "2023-10-27T14:00:00"
+program_end_time = ET.SubElement(program, "EndTime")
+program_end_time.text = "2023-10-27T15:30:00"
+
+# Create an ElementTree
+tree = ET.ElementTree(epg)
+
+# Save the EPG XML to a file
+with open("channel12_epg.xml", "wb") as file:
+    tree.write(file)
+
+print("EPG XML file saved as channel12_epg.xml")
